@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/atci-ai-booth/static/css/main.506466f2.css",
-    "main.js": "/atci-ai-booth/static/js/main.7e2c9d51.js",
+    "main.css": "/atci-ai-booth/static/css/main.df89d077.css",
+    "main.js": "/atci-ai-booth/static/js/main.0b8b970d.js",
     "static/media/bg.png": "/atci-ai-booth/static/media/bg.d08184571ad103f701b4.png",
     "index.html": "/atci-ai-booth/index.html",
-    "main.506466f2.css.map": "/atci-ai-booth/static/css/main.506466f2.css.map",
-    "main.7e2c9d51.js.map": "/atci-ai-booth/static/js/main.7e2c9d51.js.map"
+    "main.df89d077.css.map": "/atci-ai-booth/static/css/main.df89d077.css.map",
+    "main.0b8b970d.js.map": "/atci-ai-booth/static/js/main.0b8b970d.js.map"
   },
   "entrypoints": [
-    "static/css/main.506466f2.css",
-    "static/js/main.7e2c9d51.js"
+    "static/css/main.df89d077.css",
+    "static/js/main.0b8b970d.js"
   ]
 }
