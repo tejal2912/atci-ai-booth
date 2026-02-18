@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/mumbaicarnival2026/static/css/main.b5c0ab05.css",
-    "main.js": "/mumbaicarnival2026/static/js/main.3a78451d.js",
+    "main.js": "/mumbaicarnival2026/static/js/main.df97e0d9.js",
     "static/media/bg.png": "/mumbaicarnival2026/static/media/bg.d08184571ad103f701b4.png",
     "index.html": "/mumbaicarnival2026/index.html",
     "main.b5c0ab05.css.map": "/mumbaicarnival2026/static/css/main.b5c0ab05.css.map",
-    "main.3a78451d.js.map": "/mumbaicarnival2026/static/js/main.3a78451d.js.map"
+    "main.df97e0d9.js.map": "/mumbaicarnival2026/static/js/main.df97e0d9.js.map"
   },
   "entrypoints": [
     "static/css/main.b5c0ab05.css",
-    "static/js/main.3a78451d.js"
+    "static/js/main.df97e0d9.js"
   ]
 }
