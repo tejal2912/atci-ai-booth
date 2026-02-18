@@ -1,0 +1,143 @@
+body {
+  margin: 0!important;
+}
+
+.download-container {
+  min-height: 100vh;
+  background: url("../../public/imgs/bg.png") no-repeat center/cover;
+
+}
+
+.download-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-card {
+  padding: 40px;
+  border-radius: 15px;
+  max-width: 450px;
+  width: 100%;
+  color: white;
+}
+
+.download-btn {
+  width: 100%;
+  padding: 12px;
+  margin: 20px 0;
+  background: #2f6cff;
+  border: none;
+  color: white;
+  border-radius: 8px;
+}
+
+.question {
+  display: flex;
+  justify-content: space-between;
+  /* Push buttons to right */
+  align-items: center;
+  /* Vertical center */
+  margin: 15px 0;
+  gap: 10px;
+  font-size: 14px;
+}
+
+
+.question div button {
+  margin: 5px;
+  padding: 6px 15px;
+  border-radius: 20px;
+  border: none;
+}
+
+textarea {
+  width: 100%;
+  min-height: 80px;
+  margin-top: 15px;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: goldenrod;
+  border: none;
+  border-radius: 25px;
+  color: white;
+}
+
+.answer-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.answer-buttons button {
+  padding: 5px 16px;
+  border-radius: 20px;
+  background: #e6d3b3;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.answer-buttons button:last-child {
+  background: #2a3f6f;
+  color: white;
+}
+
+/* Normal buttons */
+.answer-buttons button {
+  padding: 6px 18px;
+  border-radius: 20px;
+  background: #2a3f6f;
+  border: none;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+/* Hover */
+.answer-buttons button:hover {
+  opacity: 1;
+}
+
+/* Selected button */
+.answer-buttons button.active {
+  background: linear-gradient(to right, #f5c16c, #d89b3a);
+  color: #1a1a1a;
+  opacity: 1;
+  box-shadow: 0 0 8px rgba(245, 193, 108, 0.7);
+}
+
+/* Premium Back Button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 5% 0 0 5%;
+
+  border-radius: 20px;
+
+  padding: 6px 14px;
+
+  font-size: 13px;
+  font-weight: 500;
+
+
+
+}
+
+
+/* Click Effect */
+.back-btn:active {
+  transform: scale(0.95);
+}
+
+.text-center{
+  text-align: center;
+}
