@@ -1,10 +1,11 @@
 body {
-  margin: 0!important;
+  margin: 0 !important;
 }
 
 .download-container {
   min-height: 100vh;
   background: url("../../public/imgs/bg.png") no-repeat center/cover;
+  
 
 }
 
@@ -22,15 +23,93 @@ body {
   color: white;
 }
 
+/* Download Button - Premium Style */
+
+/* Classy Corporate Download Button */
+
 .download-btn {
   width: 100%;
-  padding: 12px;
-  margin: 20px 0;
-  background: #2f6cff;
-  border: none;
-  color: white;
-  border-radius: 8px;
+  max-width: 420px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 26px;
+
+  /* Elegant dark-blue gradient */
+  background: linear-gradient(135deg, #1f3c88, #274b9f);
+
+  color: #f5f8ff;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 32px;
+
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 22px rgba(31, 60, 136, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+  transition: all 0.3s ease;
+
+  margin: 24px auto;
 }
+
+/* Icon inside button */
+
+.download-btn img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* Hover Effect */
+
+.download-btn:hover {
+  background: linear-gradient(135deg, #2447a0, #2f5cc0);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 30px rgba(36, 71, 160, 0.6);
+}
+
+/* Click Effect */
+
+.download-btn:active {
+  transform: scale(0.96);
+
+  box-shadow:
+    0 5px 15px rgba(31, 60, 136, 0.4);
+}
+
+/* Focus (Accessibility) */
+
+.download-btn:focus-visible {
+  outline: 2px solid rgba(120, 160, 255, 0.6);
+  outline-offset: 3px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .download-btn {
+    font-size: 15px;
+    padding: 12px 22px;
+  }
+
+  .download-btn img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
 
 .question {
   display: flex;
@@ -43,17 +122,9 @@ body {
   font-size: 14px;
 }
 
-
-.question div button {
-  margin: 5px;
-  padding: 6px 15px;
-  border-radius: 20px;
-  border: none;
-}
-
 textarea {
-  width: 100%;
-  min-height: 80px;
+  width: calc(100% - 20px);
+  min-height: 65px;
   margin-top: 15px;
   border-radius: 8px;
   padding: 10px;
@@ -114,30 +185,170 @@ textarea {
   box-shadow: 0 0 8px rgba(245, 193, 108, 0.7);
 }
 
-/* Premium Back Button */
-.back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin: 5% 0 0 5%;
+/* Modern Glass Back Button */
+/* Glass Back Button with Icon */
 
-  border-radius: 20px;
+.back-btn-glass {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
   padding: 6px 14px;
 
-  font-size: 13px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+
+  color: #ffffff;
+  font-size: 14px;
   font-weight: 500;
 
+  cursor: pointer;
+  transition: all 0.25s ease;
 
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 
+  z-index: 10;
 }
 
+/* Hover Effect */
+
+.back-btn-glass:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(-3px);
+}
 
 /* Click Effect */
-.back-btn:active {
+
+.back-btn-glass:active {
   transform: scale(0.95);
 }
 
-.text-center{
+/* Icon Wrapper */
+
+.back-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon Image */
+
+.back-arrow img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+/* Animate Icon on Hover */
+
+.back-btn-glass:hover .back-arrow img {
+  transform: translateX(-2px);
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 600px) {
+  .back-btn-glass {
+    top: 15px;
+    left: 15px;
+    padding: 5px 12px;
+    font-size: 13px;
+  }
+
+  .back-arrow img {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.text-center {
   text-align: center;
 }
+
+/* Wrapper holding both sections */
+.download-wrapper {
+  max-width: 480px;
+  margin-top: 7%;
+  padding: 40px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Individual Section Card */
+.section-card {
+  padding: 28px;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  color: white;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Section Titles */
+.section-card h2 {
+  font-size: 22px;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.section-card h3 {
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+/* Feedback section spacing */
+.feedback-section {
+  padding-top: 24px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .section-card {
+    padding: 20px;
+  }
+
+  .section-card h2 {
+    font-size: 18px;
+  }
+
+  .section-card h3 {
+    font-size: 16px;
+  }
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* dim background */
+  backdrop-filter: blur(8px); /* blur background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* GIF inside overlay */
+.loading-overlay img {
+  width: 320px;
+  height: 320px;
+  object-fit: contain;
+}
+

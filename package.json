@@ -1,5 +1,5 @@
 {
-  "homepage": "https://tejal2912.github.io/atci-ai-booth",
+  "homepage": "https://mumbaicarnival2026.github.io",
   "name": "atci-ai-booth",
   "version": "0.1.0",
   "private": true,
@@ -12,6 +12,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "bootstrap": "^5.3.8",
+    "lottie-react": "^2.4.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-redux": "^9.2.0",

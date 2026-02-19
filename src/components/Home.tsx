@@ -41,6 +41,7 @@ const Home: React.FC = () => {
             value={enterpriseId}
             onChange={handleChange}
             placeholder="name.surname"
+            autoCapitalize="none"
             required
           />
 

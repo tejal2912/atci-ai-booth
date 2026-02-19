@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { useNavigate } from "react-router-dom";
-
+import loadingAnimation from "../assets/loading.json";
+import Player from "lottie-react"; 
 import "./Download.css";
 
 const DownloadPage: React.FC = () => {
@@ -37,34 +38,52 @@ const DownloadPage: React.FC = () => {
   ];
 
 
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw055V8x_QTw5UaTCYuPcwhcSl5bWKYoKo5n9MmTHeNzCWb_1ZPgDCBD7dFSPUAyxI/exec";
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbw055V8x_QTw5UaTCYuPcwhcSl5bWKYoKo5n9MmTHeNzCWb_1ZPgDCBD7dFSPUAyxI/exec";
+
+
+  useEffect(() => {
+    if (!enterpriseId) {
+      navigate("/");
+    }
+  }, [enterpriseId, navigate]);
 
   const handleSubmit = async () => {
+    setLoading(true);
 
+    // Ensure everything is a string
     const payload = {
-      enterpriseId,
-      ...feedback,
+      enterpriseId: String(enterpriseId || ""),
+      useful: String(feedback.useful || ""),
+      clear: String(feedback.clear || ""),
+      recommend: String(feedback.recommend || ""),
+      comments: String(feedback.comments || ""),
     };
 
     try {
-      const res = await fetch(SCRIPT_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain",
-        },
-        body: JSON.stringify(payload),
-      });
+      const body = new URLSearchParams(payload).toString();
 
+      console.log("Sending:", payload); // Debug
+
+      const res = await fetch(SCRIPT_URL + '?' + body, {
+        method: "GET",
+      });
 
       const data = await res.json();
 
-      alert("Saved successfully!");
+      console.log("Response:", data);
 
+      alert("Saved successfully!");
+      navigate("/");
+      setLoading(false);
     } catch (err) {
-      console.error(err);
+      console.error("Error:", err);
+      setLoading(false);
       alert("Failed to submit");
     }
   };
+
+
 
 
 
@@ -73,11 +92,11 @@ const DownloadPage: React.FC = () => {
   };
 
   const handleDownload = () => {
-    const fileUrl = "/doc/Microsoft365Copilot-V1.docx";
+    const fileUrl = "/doc/Microsoft365Copilot-V1.pdf";
 
     const link = document.createElement("a");
     link.href = fileUrl;
-    link.download = "Microsoft365Copilot-V1.docx";
+    link.download = "Microsoft365Copilot-V1.pdf";
 
     document.body.appendChild(link);
     link.click();
@@ -89,72 +108,85 @@ const DownloadPage: React.FC = () => {
 
 
   return (
-
     <div className="download-container">
-      <button
-        className="back-btn"
-        onClick={() => navigate("/")}
-      >
-        <span className="back-icon">←</span>
-        Back
+      {/* Loading Overlay */}
+      {loading && (
+        <div className="loading-overlay">
+          <Player
+            autoplay
+            loop
+            animationData={loadingAnimation}
+            style={{ height: 150, width: 150 }}
+          />
+        </div>
+      )}
+
+      {/* Back Button */}
+      <button className="back-btn-glass" onClick={() => navigate("/")}>
+        <span className="back-arrow">
+          <img src="/imgs/back.png" alt="Back" />
+        </span>
       </button>
 
       <div className="download-content">
+        <div className="download-wrapper">
+          {/* DOWNLOAD SECTION */}
+          <div className="section-card">
+            <h2 className="text-center">
+              Transform the Way You Work with Microsoft Copilot
+            </h2>
+            <p className="text-center">
+              A practical guide to leveraging AI for better productivity and collaboration.
+            </p>
+            <button className="download-btn" onClick={handleDownload}>
+              <img src="/imgs/pdf.png" alt="Download" />
+              Download Copilot Guide
+            </button>
+          </div>
 
-        <div className="download-card">
-
-          <h1 className="text-center">Unlock Higher Productivity</h1>
-          <p>with This Downloadable Guide.</p>
-
-          <button className="download-btn" onClick={handleDownload}>
-            📄 Download Word Report
-          </button>
-
-          <h3>Please provide your feedback</h3>
-
-          {questions.map((q) => (
-            <div className="question" key={q.id}>
-              <span>{q.text}</span>
-
-              <div className="answer-buttons">
-                <button
-                  className={feedback[q.id as keyof typeof feedback] === "Yes" ? "active" : ""}
-                  onClick={() => handleSelect(q.id, "Yes")}
-                >
-                  Yes
-                </button>
-
-                <button
-                  className={feedback[q.id as keyof typeof feedback] === "No" ? "active" : ""}
-                  onClick={() => handleSelect(q.id, "No")}
-                >
-                  No
-                </button>
+          {/* FEEDBACK SECTION */}
+          <div className="section-card feedback-section">
+            <h3>Please provide your feedback</h3>
+            {questions.map((q) => (
+              <div className="question" key={q.id}>
+                <span>{q.text}</span>
+                <div className="answer-buttons">
+                  <button
+                    className={
+                      feedback[q.id as keyof typeof feedback] === "Yes" ? "active" : ""
+                    }
+                    onClick={() => handleSelect(q.id, "Yes")}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    className={
+                      feedback[q.id as keyof typeof feedback] === "No" ? "active" : ""
+                    }
+                    onClick={() => handleSelect(q.id, "No")}
+                  >
+                    No
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
 
+            <textarea
+              placeholder="Enter comments..."
+              onChange={(e) =>
+                setFeedback({ ...feedback, comments: e.target.value })
+              }
+            />
 
-          <textarea
-            placeholder="Enter comments..."
-            onChange={(e) =>
-              setFeedback({ ...feedback, comments: e.target.value })
-            }
-          />
-
-          <button
-            className="submit-btn"
-            onClick={handleSubmit}
-            disabled={loading}
-          >
-            {loading ? "Submitting..." : "Submit Feedback"}
-          </button>
-
-
+            <button className="submit-btn" onClick={handleSubmit} disabled={loading}>
+              {loading ? "Submitting..." : "Submit Feedback"}
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
+
 };
 
 export default DownloadPage;
